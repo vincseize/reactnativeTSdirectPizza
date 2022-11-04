@@ -1,0 +1,43 @@
+.container {
+  margin: auto;
+  padding-top: 50px;
+  width: 330px;
+  height: 330px;
+}
+
+.input {
+  margin-bottom: 30px;
+  padding: 5px 15px;
+  width: 300px;
+}
+
+.btn {
+  padding: 5px 10px;
+  cursor: pointer;
+  width: 300px;
+  font-weight: bolder;
+  background-color: darkgreen;
+  color: white;
+}
+
+.btn:hover {
+  font-weight: bolder;
+  background-color: aqua;
+  color: white;
+}
+
+.btn-cancel {
+  margin-top: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+  width: 300px;
+  font-weight: bolder;
+  background-color: grey;
+  color: white;
+}
+
+.btn-cancel:hover {
+  font-weight: bolder;
+  background-color: darkgrey;
+  color: white;
+}

@@ -1,0 +1,52 @@
+import React from 'react';
+import registerServiceWorker from '../registerServiceWorker';
+import './client.css';
+
+import { legacy_createStore as createStore } from 'redux';
+// import { createStore } from 'redux';
+import { shop } from '../reducers/index';
+import "webrtc";
+import { ShoppingCartState } from '../types/index';
+
+// Ideally this data is retrieved from a server either on load
+// or triggered by an action in the system.
+const dynamicallyLoadedItems = [
+  { name: 'Cherries 🍒', price: 0.25 },
+  { name: 'Kiwis 🥝', price: 0.40 },
+  { name: 'Apples 🍎', price: 0.35 },
+  { name: 'Peaches 🍑', price: 0.60 },
+  { name: 'Grapes 🍇', price: 0.30 }
+];
+
+const store = createStore<ShoppingCartState>(
+  shop, {
+    availableItems: dynamicallyLoadedItems,
+    items: [],
+    total: 0
+  }, 
+  window['__REDUX_DEVTOOLS_EXTENSION__'] && window['__REDUX_DEVTOOLS_EXTENSION__']()
+);
+
+import ShoppingCart from '../containers/ShoppingCart';
+import { Provider } from 'react-redux';
+
+const Client = () => {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '80vh',
+        padding: '25px',
+      }}
+    >
+      <h1>Mon Panier</h1>
+      <Provider store={store}>
+        <ShoppingCart />
+      </Provider>
+      registerServiceWorker();
+    </div>
+)};
+
+export default Client;
