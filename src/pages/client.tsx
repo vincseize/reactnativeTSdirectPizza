@@ -34,6 +34,18 @@ const Client = () => {
   };
 
   const [total, setTotal] = useState(0);
+  const [soustotal, setSoustotal] = useState(0);
+  //const floatingPointNumber = 1.567;
+  // parseFloat(floatingPointNumber.toFixed(2));
+  // parseFloat(floatingPointNumber.toPrecision(3));
+  const taxe = 5.001;
+  parseFloat(taxe.toFixed(2));
+  parseFloat(taxe.toPrecision(3));
+  (Math.round(taxe * 100) / 100).toFixed(2);
+  const fraisPort = 15.001;
+  parseFloat(fraisPort.toFixed(2));
+  parseFloat(fraisPort.toPrecision(3));
+  (Math.round(fraisPort * 100) / 100).toFixed(2);
 
   const [count1, setCount1] = useState(0);
   const [total1, setTotal1] = useState(0);
@@ -46,7 +58,7 @@ const Client = () => {
   const state: IState = { count: 0 };
   const [visible, setVisible] = useState(true);
 
-  const [show, setShow] = useState(false);
+  // const [show, setShow] = useState(false);
 
   // map sample for boucle
   // https://stackoverflow.com/questions/62432393/how-to-get-data-attribute-in-react
@@ -70,11 +82,16 @@ const Client = () => {
       setCount(countPlus);
       const newtotal = countPlus * prix;
       setTotal(newtotal);
+      const st = soustotal + prix;
+      setSoustotal(st);
       console.log('id:' + id);
       console.log('prix:' + prix);
       console.log('count:' + countPlus);
+      console.log('sous total old:' + soustotal);
+      console.log('sous total:' + st);
+      console.log('total old:' + total);
       console.log('total:' + newtotal);
-      TOTAL(prix, 'addition');
+      TOTAL(prix, st, 'addition');
     }
   };
   const decrementCount = (
@@ -90,28 +107,56 @@ const Client = () => {
       setCount(countMoins);
       const newtotal = countMoins * prix;
       setTotal(newtotal);
+      const st = soustotal - prix;
+      setSoustotal(st);
       console.log('id:' + id);
       console.log('prix:' + prix);
       console.log('count:' + countMoins);
+      console.log('sous total old:' + soustotal);
+      console.log('sous total:' + st);
+      console.log('total old:' + total);
       console.log('total:' + newtotal);
-      TOTAL(prix, 'substraction');
+      TOTAL(prix, st, 'substraction');
     }
   };
-  const TOTAL = (prix: number, operator: string) => {
+  const TOTAL = (prix: number, st: number, operator: string) => {
     if (operator == 'addition') {
-      const t = total + prix;
-      console.log('total old:' + total);
-      setTotal(t);
-      console.log('total:' + t);
+      const totalST = st;
+      setTotal(totalST);
+      const taxeCalc = (totalST * 5) / 100;
+      parseFloat(taxeCalc.toFixed(2));
+      parseFloat(taxeCalc.toPrecision(2));
+      const calcTot = totalST + taxeCalc + fraisPort;
+      parseFloat(calcTot.toFixed(2));
+      parseFloat(calcTot.toPrecision(2));
+      Math.floor(calcTot * 10);
+      setTotal(calcTot);
+      console.log('---');
+      console.log('totalST:' + totalST);
+      console.log('taxeCalc:' + taxeCalc);
+      console.log('fraisPort:' + fraisPort);
     }
     if (operator == 'substraction') {
       if (total > 0) {
-        const t = total - prix;
-        console.log('total old:' + total);
-        setTotal(t);
-        console.log('total:' + t);
+        const totalST = st;
+        let fPort = fraisPort;
+        if (totalST == 0) {
+          fPort = 0;
+        }
+        setTotal(totalST);
+        const taxeCalc = (totalST * 5) / 100;
+        parseFloat(taxeCalc.toFixed(2));
+        parseFloat(taxeCalc.toPrecision(2));
+        const calcTot = totalST + taxeCalc + fPort;
+        parseFloat(calcTot.toFixed(2));
+        parseFloat(calcTot.toPrecision(2));
+        setTotal(calcTot);
+        console.log('---');
+        console.log('totalST:' + totalST);
+        console.log('taxeCalc:' + taxeCalc);
+        console.log('fraisPort:' + fPort);
       }
-      console.log('---');
+      console.log('---------------------');
     }
   };
   // const TOTALmoins = (prix: number) => {
@@ -216,7 +261,7 @@ const Client = () => {
       }}
     >
       <h1>Mon Panier</h1>
-      {show ? <div>toto</div> : null}
+      {/* {show ? <div>toto</div> : null} */}
       {/* <div id="product-1">toto1</div> */}
       <div className="shopping-cart">
         <div className="column-labels">
@@ -351,7 +396,7 @@ const Client = () => {
           <div className="totals-item">
             <label>Sous-total</label>
             <div className="totals-value" id="cart-subtotal">
-              71.97
+              {soustotal}
             </div>
           </div>
           <div className="totals-item">
