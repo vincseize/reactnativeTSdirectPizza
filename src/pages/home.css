@@ -9,3 +9,11 @@
   background-repeat: no-repeat;
   width: 100%;
 }
+
+.divTitleHome {
+  padding-left: 25px;
+}
+
+.TitleHome {
+  color: rgb(255, 217, 0);
+}

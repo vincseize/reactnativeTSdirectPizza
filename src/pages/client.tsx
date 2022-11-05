@@ -62,12 +62,14 @@ const Client = () => {
       const countPlus = count1 + 1;
       setCount1(countPlus);
       const total1 = countPlus * prix1;
-      TOTALplus(total1);
+      // TOTALplus(total1);
       setTotal1(total1);
-      console.log(id);
-      console.log(prix1);
-      console.log(countPlus);
-      console.log(total1);
+      console.log('id:' + id);
+      console.log('prix:' + prix1);
+      console.log('count:' + countPlus);
+      console.log('total1:' + total1);
+      // console.log('TOTALadd:' + total);
+      TOTAL(prix1, 'addition');
     }
   };
   const decrementCount = (e: any) => {
@@ -75,22 +77,40 @@ const Client = () => {
     if (count1 > 0 && count1 <= 10) {
       const countMoins = count1 - 1;
       setCount1(countMoins);
-      const tot = countMoins * prix1;
-      setTotal1(tot);
-      console.log(id);
-      console.log(prix1);
-      console.log(countMoins);
-      // console.log(total1);
-      TOTALmoins(tot);
+      const total1 = countMoins * prix1;
+      setTotal1(total1);
+      console.log('id:' + id);
+      console.log('prix:' + prix1);
+      console.log('count:' + countMoins);
+      console.log('total1:' + total1);
+      TOTAL(prix1, 'substraction');
     }
   };
-  const TOTALplus = (total1: number) => {
-    // const t = countPlus * prix1;
-    setTotal(total + total1);
+  const TOTAL = (prix: number, operator: string) => {
+    if (operator == 'addition') {
+      const t = total + prix;
+      console.log('total old:' + total);
+      setTotal(t);
+      console.log('total:' + t);
+    }
+    if (operator == 'substraction') {
+      if (total > 0) {
+        const t = total - prix;
+        console.log('total old:' + total);
+        setTotal(t);
+        console.log('total:' + t);
+      }
+      console.log('---');
+    }
   };
-  const TOTALmoins = (tot: number) => {
-    setTotal(total - tot);
-  };
+  // const TOTALmoins = (prix: number) => {
+  //   if (total > 0) {
+  //     const t = total - prix;
+  //     console.log('total old:' + total);
+  //     setTotal(t);
+  //     console.log('total:' + t);
+  //   }
+  // };
   // https://codingbeautydev.com/blog/react-remove-element-onclick/
   // useEffect in function, First letter function have to be uppercase
   const HideElement = (e: any) => {
@@ -243,6 +263,16 @@ const Client = () => {
             >
               Supprimer
             </button>
+            <span className="counter-span">
+              <button
+                id="1"
+                data-prov="gghghghghgghggggghg"
+                className="btn-counter-span"
+                onClick={e => setTotal(0)}
+              >
+                Reset
+              </button>
+            </span>
           </div>
           <div id="prix-1" className="product-line-price">
             {total1}

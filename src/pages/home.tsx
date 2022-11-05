@@ -12,7 +12,9 @@ const Home = () => {
         height: '85vh',
       }}
     >
-      {/* <h1>Home</h1> */}
+      <div className="divTitleHome">
+        <h1 className="TitleHome">Toutes nos pizzas sont faites maison</h1>
+      </div>
     </div>
   );
 };
