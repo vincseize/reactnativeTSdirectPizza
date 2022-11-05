@@ -40,6 +40,8 @@ const Client = () => {
   const prix1 = 16;
 
   const [count2, setCount2] = useState(0);
+  const [total2, setTotal2] = useState(0);
+  const prix2 = 56;
 
   const state: IState = { count: 0 };
   const [visible, setVisible] = useState(true);
@@ -55,35 +57,44 @@ const Client = () => {
   const fadeTime = 300;
 
   /* Assign actions */
-  const incrementCount = (e: any) => {
+  const incrementCount = (
+    e: any,
+    count: number,
+    setCount: any,
+    setTotal: any,
+    prix: number,
+  ) => {
     const id = e.currentTarget.id;
-    // const c = count&id;
-    if (count1 >= 0 && count1 < 10) {
-      const countPlus = count1 + 1;
-      setCount1(countPlus);
-      const total1 = countPlus * prix1;
-      // TOTALplus(total1);
-      setTotal1(total1);
+    if (count >= 0 && count < 10) {
+      const countPlus = count + 1;
+      setCount(countPlus);
+      const newtotal = countPlus * prix;
+      setTotal(newtotal);
       console.log('id:' + id);
-      console.log('prix:' + prix1);
+      console.log('prix:' + prix);
       console.log('count:' + countPlus);
-      console.log('total1:' + total1);
-      // console.log('TOTALadd:' + total);
-      TOTAL(prix1, 'addition');
+      console.log('total:' + newtotal);
+      TOTAL(prix, 'addition');
     }
   };
-  const decrementCount = (e: any) => {
+  const decrementCount = (
+    e: any,
+    count: number,
+    setCount: any,
+    setTotal: any,
+    prix: number,
+  ) => {
     const id = e.currentTarget.id;
-    if (count1 > 0 && count1 <= 10) {
-      const countMoins = count1 - 1;
-      setCount1(countMoins);
-      const total1 = countMoins * prix1;
-      setTotal1(total1);
+    if (count > 0 && count <= 10) {
+      const countMoins = count - 1;
+      setCount(countMoins);
+      const newtotal = countMoins * prix;
+      setTotal(newtotal);
       console.log('id:' + id);
-      console.log('prix:' + prix1);
+      console.log('prix:' + prix);
       console.log('count:' + countMoins);
-      console.log('total1:' + total1);
-      TOTAL(prix1, 'substraction');
+      console.log('total:' + newtotal);
+      TOTAL(prix, 'substraction');
     }
   };
   const TOTAL = (prix: number, operator: string) => {
@@ -231,7 +242,9 @@ const Client = () => {
                 <button
                   id="1"
                   className="btn-counter-span"
-                  onClick={e => incrementCount(e)}
+                  onClick={e =>
+                    incrementCount(e, count1, setCount1, setTotal1, prix1)
+                  }
                 >
                   +
                 </button>
@@ -244,7 +257,9 @@ const Client = () => {
                   id="1"
                   data-prov="gghghghghgghggggghg"
                   className="btn-counter-span"
-                  onClick={e => decrementCount(e)}
+                  onClick={e =>
+                    decrementCount(e, count1, setCount1, setTotal1, prix1)
+                  }
                 >
                   -
                 </button>
@@ -263,7 +278,7 @@ const Client = () => {
             >
               Supprimer
             </button>
-            <span className="counter-span">
+            {/* <span className="counter-span">
               <button
                 id="1"
                 data-prov="gghghghghgghggggghg"
@@ -272,7 +287,7 @@ const Client = () => {
               >
                 Reset
               </button>
-            </span>
+            </span> */}
           </div>
           <div id="prix-1" className="product-line-price">
             {total1}
@@ -286,7 +301,7 @@ const Client = () => {
             <div className="product-title">Pizza 2</div>
             <p className="product-description">4 Fromages</p>
           </div>
-          <div className="product-price">56</div>
+          <div className="product-price">{prix2}</div>
           <div className="product-quantity">
             <div className="counter-span-div">
               <span className="counter-span">
@@ -294,7 +309,9 @@ const Client = () => {
                   id="2"
                   data-prov="gghghghghgghggggghg"
                   className="btn-counter-span"
-                  onClick={e => incrementCount(e)}
+                  onClick={e =>
+                    incrementCount(e, count2, setCount2, setTotal2, prix2)
+                  }
                 >
                   +
                 </button>
@@ -307,7 +324,9 @@ const Client = () => {
                   id="2"
                   data-prov="gghghghghgghggggghg"
                   className="btn-counter-span"
-                  onClick={e => decrementCount(e)}
+                  onClick={e =>
+                    decrementCount(e, count2, setCount2, setTotal2, prix2)
+                  }
                 >
                   -
                 </button>
@@ -325,7 +344,7 @@ const Client = () => {
             </button>
           </div>
           <div id="prix-2" className="product-line-price">
-            0
+            {total2}
           </div>
         </div>
         <div className="totals">
