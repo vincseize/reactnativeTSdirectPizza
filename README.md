@@ -4,9 +4,12 @@
 
 ## Install
 
+install NodeJs. 
+Since the server is not a requirement of the final build!!!
+
 In the project directory, first install the dependencies, you can run:
 
-### `npm run start`
+### `npm install`
 
 ## Available Scripts
 
