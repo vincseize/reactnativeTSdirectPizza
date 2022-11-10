@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+// import { useSearchParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 import './styles.css';
@@ -29,12 +29,12 @@ const Login = () => {
     }
   };
 
-  const resetForm = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    console.log('clear');
-    setTermLogin('');
-    setTermPwd('');
-  };
+  // const resetForm = (event: React.FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault();
+  //   console.log('clear');
+  //   setTermLogin('');
+  //   setTermPwd('');
+  // };
 
   return (
     <>

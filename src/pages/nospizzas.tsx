@@ -1,12 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
-import { Component } from 'react';
+// import { Component } from 'react';
 
 import { Checkbox, Divider } from 'antd';
 import type { CheckboxChangeEvent } from 'antd/es/checkbox';
 import type { CheckboxValueType } from 'antd/es/checkbox/Group';
 
-import { InputNumber } from 'antd';
+// import { InputNumber } from 'antd';
 import './nospizzas.css';
 
 import ImagesPizza1 from '../images/products/pizzas/pizza1.jpg';
@@ -19,29 +19,29 @@ import ImagesPizza7 from '../images/products/pizzas/pizza7.jpg';
 import ImagesPizza8 from '../images/products/pizzas/pizza8.jpg';
 import ImagesPizza9 from '../images/products/pizzas/pizza9.jpg';
 
-const CheckboxGroup = Checkbox.Group;
+// const CheckboxGroup = Checkbox.Group;
 
 const plainOptions = [' Promo ', ' Vegan ', ' Alergene '];
 const defaultCheckedList = [''];
 
 const Nospizzas = () => {
-  const [checkedList, setCheckedList] =
-    useState<CheckboxValueType[]>(defaultCheckedList);
+  // const [checkedList, setCheckedList] =
+  //   useState<CheckboxValueType[]>(defaultCheckedList);
 
   const [indeterminate, setIndeterminate] = useState(true);
   const [checkAll, setCheckAll] = useState(false);
 
-  const onChange = (list: CheckboxValueType[]) => {
-    setCheckedList(list);
-    setIndeterminate(!!list.length && list.length < plainOptions.length);
-    setCheckAll(list.length === plainOptions.length);
-  };
+  // const onChange = (list: CheckboxValueType[]) => {
+  //   setCheckedList(list);
+  //   setIndeterminate(!!list.length && list.length < plainOptions.length);
+  //   setCheckAll(list.length === plainOptions.length);
+  // };
 
-  const onCheckAllChange = (e: CheckboxChangeEvent) => {
-    setCheckedList(e.target.checked ? plainOptions : []);
-    setIndeterminate(false);
-    setCheckAll(e.target.checked);
-  };
+  // const onCheckAllChange = (e: CheckboxChangeEvent) => {
+  //   setCheckedList(e.target.checked ? plainOptions : []);
+  //   setIndeterminate(false);
+  //   setCheckAll(e.target.checked);
+  // };
 
   const [isAllBoxShown, setIsAllBoxShown] = useState(true);
 
@@ -50,9 +50,9 @@ const Nospizzas = () => {
   const [isAlergeneBoxShown, setIsAlergeneBoxShown] = useState(true);
 
   // This function is triggered when the button is clicked
-  const buttonHandler = () => {
-    setIsPromoBoxShown(!isPromoBoxShown);
-  };
+  // const buttonHandler = () => {
+  //   setIsPromoBoxShown(!isPromoBoxShown);
+  // };
 
   // This function is triggered when the checkbox changes
   const checkboxHandlerPromo = () => {

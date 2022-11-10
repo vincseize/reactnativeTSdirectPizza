@@ -1,37 +1,37 @@
-import { InputNumber } from 'antd';
-import { toFixed } from 'rc-input-number/es/utils/MiniDecimal';
+// import { InputNumber } from 'antd';
+// import { toFixed } from 'rc-input-number/es/utils/MiniDecimal';
 // import { formatter } from 'antd/utils'
 import React from 'react';
-import ReactDOM from 'react';
+// import ReactDOM from 'react';
 import { ChangeEvent, useEffect, useState, useRef } from 'react';
-import { Component } from 'react';
+// import { Component } from 'react';
 
 import 'antd/dist/antd.css';
 import './client.css';
 
 import ImagesPizza1 from '../images/products/pizzas/pizza1.jpg';
 import ImagesPizza2 from '../images/products/pizzas/pizza2.jpg';
-import ImagesPizza3 from '../images/products/pizzas/pizza3.jpg';
-import ImagesPizza4 from '../images/products/pizzas/pizza4.jpg';
-import ImagesPizza5 from '../images/products/pizzas/pizza5.jpg';
-import ImagesPizza6 from '../images/products/pizzas/pizza6.jpg';
-import ImagesPizza7 from '../images/products/pizzas/pizza7.jpg';
-import ImagesPizza8 from '../images/products/pizzas/pizza8.jpg';
-import ImagesPizza9 from '../images/products/pizzas/pizza9.jpg';
+// import ImagesPizza3 from '../images/products/pizzas/pizza3.jpg';
+// import ImagesPizza4 from '../images/products/pizzas/pizza4.jpg';
+// import ImagesPizza5 from '../images/products/pizzas/pizza5.jpg';
+// import ImagesPizza6 from '../images/products/pizzas/pizza6.jpg';
+// import ImagesPizza7 from '../images/products/pizzas/pizza7.jpg';
+// import ImagesPizza8 from '../images/products/pizzas/pizza8.jpg';
+// import ImagesPizza9 from '../images/products/pizzas/pizza9.jpg';
 
 interface IState {
   count: number;
 }
 
 const Client = () => {
-  const ref = useRef(null);
+  // const ref = useRef(null);
   // const el = useRef(null);
 
   // Our state to hold current value of input
-  const [CountPizzas, setCountPizzas] = useState<string | null>('');
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target.value);
-  };
+  // const [CountPizzas, setCountPizzas] = useState<string | null>('');
+  // const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   console.log(event.target.value);
+  // };
 
   const [total, setTotal] = useState(0);
   const [soustotal, setSoustotal] = useState(0);
@@ -55,8 +55,8 @@ const Client = () => {
   const [total2, setTotal2] = useState(0);
   const prix2 = 56;
 
-  const state: IState = { count: 0 };
-  const [visible, setVisible] = useState(true);
+  // const state: IState = { count: 0 };
+  // const [visible, setVisible] = useState(true);
 
   // const [show, setShow] = useState(false);
 
@@ -64,9 +64,9 @@ const Client = () => {
   // https://stackoverflow.com/questions/62432393/how-to-get-data-attribute-in-react
 
   /* Set rates + misc */
-  const taxRate = 0.05;
-  const shippingRate = 15.0;
-  const fadeTime = 300;
+  // const taxRate = 0.05;
+  // const shippingRate = 15.0;
+  // const fadeTime = 300;
 
   /* Assign actions */
   const incrementCount = (
